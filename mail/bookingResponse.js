@@ -43,7 +43,6 @@ const bookingResponse = async ({email,room,date}) => {
                 if (error) {
                     return { status: 'Error sending booking response' };
                 } else {
-                    console.log('Booking sent successfully' )
                     return { status: 'Booking response sent successfully' };
                 }
             })
