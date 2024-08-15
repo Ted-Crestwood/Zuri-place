@@ -13,7 +13,12 @@ app.use(express.urlencoded({ extended: false }))
 const port = 3002;
 const uri = process.env.MONGO_URI;
 
-mongoose.connect(uri)
+mongoose.connect(uri,{
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    serverSelectionTimeoutMS: 5000, // Adjust this value to your preference
+    socketTimeoutMS: 45000, // Adjust this value to your preference
+})
     .then(() => {
         console.log("Connected to Zuri place@Crestwood database successfully")
     })
