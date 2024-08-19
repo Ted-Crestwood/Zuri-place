@@ -8,7 +8,7 @@ const contactSubmition =async(req,res)=>{
             return res.status({message: "Provide all the neccessary details"})
         }
         await Contact.create({email, ...data})
-        // await contactResponse({email})
+        await contactResponse({email})
         return res.status(200).json({message: "Message submitted successfully"})
     } catch (error) {
         return res.status(500).json({message: error.message})

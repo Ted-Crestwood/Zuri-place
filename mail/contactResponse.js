@@ -60,16 +60,12 @@
 
 const nodemailer = require('nodemailer');
 const hbs = require('nodemailer-express-handlebars');
-const otpGenerator = require('otp-generator');
 
 const contactResponse = async ({ email }) => {
-    // Validate email
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        return { status: 'error', message: "Invalid email address" };
+        return res.status(400).send("Invalid email address");
     }
-
     try {
-        // Configure transporter
         const transporter = nodemailer.createTransport({
             host: process.env.HOST,
             port: 465,
@@ -79,39 +75,42 @@ const contactResponse = async ({ email }) => {
                 pass: process.env.SMTP_PASSWORD
             }
         });
-
-        // Configure Handlebars options
         const hbsOptions = {
             viewEngine: {
-                extName: '.hbs',
                 partialsDir: 'views',
                 layoutsDir: 'views',
                 defaultLayout: ''
             },
-            viewPath: 'views',
-            extName: '.hbs',
-        };
-        transporter.use('compile', hbs(hbsOptions));
-
-        // Define mail options
-        const mailOptions = {
-            from: {
-                name: "Zuri Place",
-                address: process.env.EMAIL,
-            },
-            to: email,
-            subject: "Contact Form",
-            template: "contact"
-            // context: { name },
-        };
-
-        // Send the email
-        await transporter.sendMail(mailOptions);
-
-        return { status: 'success', message: 'Contact form response sent successfully' };
+            viewPath: 'views'
+        }
+        transporter.use('compile', hbs(hbsOptions))
+        function sendMail(to, subject, template, context) {
+            const mailOptions = {
+                from: {
+                    name: "Zuri Place",
+                    address: process.env.EMAIL,
+                },
+                to,
+                subject,
+                template,
+                context
+            }
+            
+            transporter.sendMail(mailOptions, (error, info) => {
+                if (error) {
+                    return { status: 'Error sending contact form response' };
+                } else {
+                    return { status: 'Contact form response sent successfully' };
+                }
+            })
+        }
+        console.log("email:",email)
+        sendMail(email, "Contact Form", "contact")
+        // await transporter.sendMail(mailOptions);
+        return { status: 'success' };
     } catch (error) {
         console.error(error);
-        return { status: 'error', message: 'Error sending contact form response' };
+        return { status: 'error', message: "Error sending otp" };
     }
 };
 

@@ -37,8 +37,7 @@ const bookingResponse = async ({email,room,date}) => {
                 template,
                 context
             }
-            // console.log("email:",email)
-
+            
             transporter.sendMail(mailOptions, (error, info) => {
                 if (error) {
                     return { status: 'Error sending booking response' };
@@ -47,6 +46,7 @@ const bookingResponse = async ({email,room,date}) => {
                 }
             })
         }
+        // console.log("email:",email)
         sendMail(email, "Room booking", "booking", {room,date})
         // await transporter.sendMail(mailOptions);
         return { status: 'success' };

@@ -72,7 +72,7 @@ const endBookingResponse = async ({ email, name }) => {
         // Configure transporter
         const transporter = nodemailer.createTransport({
             host: process.env.HOST,
-            port: 465,
+            port: 993,
             secure: true,
             auth: {
                 user: process.env.EMAIL,
