@@ -47,8 +47,8 @@ const submitBooking = async (req, res) => {
         if (!madeBooking) {
             return res.status(400).json({ message: "Error creating booking" })
         }
+        scheduleEmail(email)
         await bookingResponse({ email, room, date })
-        await scheduleEmail(email)
         return res.status(200).json({ message: "Booking made successfully", info: { email, room, checkout } })
     } catch (error) {
         return res.status(500).json({ message: error.message })

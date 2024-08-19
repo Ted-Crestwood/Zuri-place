@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const dotenv = require('dotenv');
 const booking = require('./routes/booking.route');
+const contact = require('./routes/contact.route')
 dotenv.config()
 
 const app = express()
@@ -27,6 +28,7 @@ mongoose.connect(uri,{
     })
 
 app.use('/booking', booking)
+app.use('/contact', contact)
 app.use('/', (req, res) => {
     return res.send("Welcome to Zuri place@Crestwood apis")
 })
