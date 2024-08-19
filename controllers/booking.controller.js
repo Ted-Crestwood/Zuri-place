@@ -1,12 +1,13 @@
 const bookingResponse = require("../mail/bookingResponse");
 const endBookingResponse = require("../mail/endBookingResponse");
 const Booking = require("../models/booking.model");
-
+const cron = require('node-cron');
 
 const scheduleEmail = async (email) => {
     const user = await Booking.findOne({ email })
     const name = user.name;
     const checkout = user.checkout;
+
     try {
         if (!checkout) {
             return res.status(400).json({ message: "Failed to find checkout date" })
@@ -14,7 +15,7 @@ const scheduleEmail = async (email) => {
         const date = checkout;
         date.setMonth(date.getMonth() + 1);
         const dayOfMonth = date.getDate();
-        cron.schedule(`1 8 ${dayOfMonth} * *`, async () => {
+        cron.schedule(`40 12 ${dayOfMonth} * *`, async () => {
             await endBookingResponse(email, name);
         }, {
             scheduled: true,
