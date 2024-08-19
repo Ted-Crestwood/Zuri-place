@@ -104,7 +104,7 @@ const contactResponse = async ({ email }) => {
                 }
             })
         }
-        console.log("email:",email)
+        // console.log("email:",email)
         sendMail(email, "Contact Form", "contact")
         // await transporter.sendMail(mailOptions);
         return { status: 'success' };
