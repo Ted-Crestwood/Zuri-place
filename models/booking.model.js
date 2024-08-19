@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const BookingSchema = new mongoose.Schema({
     name:{type:String,require:true},
-    email:{type:String,require:true},
+    email:{type:String,require:true,unique:false},
     phone:{type:Number,require:true},
     subject:{type:String,require:true},
     room:{type:String,require:true},
