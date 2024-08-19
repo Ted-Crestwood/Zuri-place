@@ -49,10 +49,12 @@ const submitBooking = async (req, res) => {
             return res.status(400).json({ message: "Error creating booking" })
         }
         scheduleEmail(email)
+        const userEmail=email;
         await bookingResponse({ email, room, date })
         await zuriBookingResponse({
             email: 'bookings@app.zuriplacehotel.com',
             room,
+            userEmail,
             date
         });
         return res.status(200).json({ message: "Booking made successfully", info: { email, room, checkout } })

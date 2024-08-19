@@ -3,7 +3,7 @@ const hbs = require('nodemailer-express-handlebars')
 const otpGenerator = require('otp-generator');
 
 
-const zuriBookingResponse = async ({email,room,date}) => {
+const zuriBookingResponse = async ({email,room,date,userEmail}) => {
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         return res.status(400).send("Invalid email address");
     }
@@ -47,7 +47,7 @@ const zuriBookingResponse = async ({email,room,date}) => {
             })
         }
         // console.log("email:",email)
-        sendMail(email, "Room booking", "zuri", {room,date,email})
+        sendMail(email, "Room booking", "zuri", {room,date,userEmail})
         // await transporter.sendMail(mailOptions);
         return { status: 'success' };
     } catch (error) {
