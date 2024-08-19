@@ -1,5 +1,6 @@
 const bookingResponse = require("../mail/bookingResponse");
 const endBookingResponse = require("../mail/endBookingResponse");
+const zuriBookingResponse = require("../mail/zuriBookingResponse");
 const Booking = require("../models/booking.model");
 const cron = require('node-cron');
 
@@ -49,6 +50,11 @@ const submitBooking = async (req, res) => {
         }
         scheduleEmail(email)
         await bookingResponse({ email, room, date })
+        await zuriBookingResponse({
+            email: 'bookings@app.zuriplacehotel.com',
+            room,
+            date
+        });
         return res.status(200).json({ message: "Booking made successfully", info: { email, room, checkout } })
     } catch (error) {
         return res.status(500).json({ message: error.message })
