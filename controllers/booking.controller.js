@@ -51,7 +51,7 @@ const submitBooking = async (req, res) => {
         scheduleEmail(email)
         await bookingResponse({ email, room, date })
         await zuriBookingResponse({
-            email: 'bookings@app.zuriplacehotel.com',
+            email: email,
             room,
             date
         });
