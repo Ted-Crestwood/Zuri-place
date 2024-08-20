@@ -1,18 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Booking Confirmation - Zuri Place Hotel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;700&display=swap" rel="stylesheet" />
     {{> styles }}
 </head>
+
 <body>
-    <div class="header">
-        {{!-- <img src="https://crestwood-files.s3.us-west-2.amazonaws.com/public/images/avatar-123.png" alt="crestwood-logo"/> --}}
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <img src="https://zuriplace.pages.dev/logos/Zuri-Place-Hotel-Logo-Gold.png"
+                    alt="ZURI PLACE HOTEL LOGO" />
+            </div>
+            <h1>Elegance & Comfort</h1>
+            <p>New Booking</p>
+        </div>
+        <div class="content">
+            <p>Dear Team,</p>
+            <p>You have received new booking from {{name}}:</p>
+            <div class="booking-details">
+                <ul>
+                    <li><strong>Client name:</strong> {{name}}</li>
+
+                    <li><strong>Check-in Date:</strong>{{checkin}}</li>
+                    <li><strong>Check-out Date:</strong> {{checkout}}</li>
+                    <li><strong>Room Type:</strong> {{room}}</li>
+
+                    <br />
+
+                    <li><strong>Phone number:</strong> {{phone}}</li>
+
+                    <li><strong>Email:</strong> {{userEmail}}</li>
+                </ul>
+            </div>
+            <p>Please reach out to the client to complete booking and payment.</p>
+
+            <!-- <a href="#" class="cta-button">Manage Your Booking</a> -->
+            <p>Best regards,<br />The Zuri Place Hotel Team</p>
+        </div>
+        <div class="footer">
+            <p>
+                <a href="https://g.co/kgs/Po2BcS7" target="_blank" rel="noopener noreferrer">
+                    Zuri Place Hotel | Zuri Place Building , Oyugis, Kenya </a>| <br />
+                <a href="tel:+254 742 807 653"> Phone: +254 742 807 653</a> |
+                <a href="mailto:reservations@zuriplacehotel.com">
+                    Email: reservations@zuriplacehotel.com</a>
+            </p>
+        </div>
     </div>
-    {{!-- <h1>Welcome to Zuri Place</h1> --}}
-    <p>A booking has been made by {{userEmail}} for a {{room}} room on {{date}}.</p>
-    <div class="footer">Regards, <br>Zuri Place</div>
 </body>
 
 </html>
