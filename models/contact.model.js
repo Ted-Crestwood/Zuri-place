@@ -5,10 +5,6 @@ const ContactSchema = new mongoose.Schema({
     email:{type:String,require:true,unique:false},
     phone:{type:Number,require:true},
     subject:{type:String,require:true},
-    room:{type:String,require:true},
-    date:{type:String,require:true},
-    checkin:{type:String,require:true},
-    checkout:{type:String,require:true},
     message:{type:String,require:true},
     createdAt:{type:Date,default: Date.now}
 })

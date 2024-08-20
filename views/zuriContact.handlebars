@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     {{> styles }}
 </head>
+
 <body>
     <div class="container">
         <div class="header">
@@ -21,16 +23,12 @@
             <div class="booking-details">
                 <ul>
                     <li><strong>Client name:</strong> {{name}}</li>
-
-                    <li><strong>Check-in Date:</strong>{{checkin}}</li>
-                    <li><strong>Check-out Date:</strong> {{checkout}}</li>
-                    <li><strong>Room Type:</strong> {{room}}</li>
-                    
-                    <br />
-
                     <li><strong>Phone number:</strong> {{phone}}</li>
 
                     <li><strong>Email:</strong> {{userEmail}}</li>
+
+                    <li><strong>Subject:</strong>{{subject}}</li>
+                    <li><strong>Message:</strong> {{message}}</li>
                 </ul>
             </div>
             <p>Please reach out to the client to complete booking and payment.</p>

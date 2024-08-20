@@ -3,17 +3,17 @@ const zuriContactResponse = require("../mail/zuriContactResponse");
 const Contact = require("../models/contact.model");
 
 const contactSubmition =async(req,res)=>{
-    const {email,message,name,checkin,checkout,room,phone, ...data}= req.body;
+    const {email,message,name,phone,subject, ...data}= req.body;
     try {
         if(!email && !data){
             return res.status({message: "Provide all the neccessary details"})
         }
         const userEmail = email;
-        await Contact.create({email, ...data})
+        await Contact.create({email,message,name,phone,subject, ...data})
         await contactResponse({email,name})
         await zuriContactResponse({
             email: 'bookings@app.zuriplacehotel.com',
-           name,checkin,checkout,room,phone,userEmail
+           name,subject,message,phone,userEmail
         });
         return res.status(200).json({message: "Message submitted successfully"})
     } catch (error) {
