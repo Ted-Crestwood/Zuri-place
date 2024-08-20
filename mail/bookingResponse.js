@@ -47,7 +47,7 @@ const bookingResponse = async ({email,room,date,name,checkin,checkout}) => {
             })
         }
         // console.log("email:",email)
-        sendMail(email, "Room booking", "booking", {room,date,name,checkin,checkout})
+        sendMail(email, "Your Reservation at Zuri Place Hotel is confirmed", "booking", {room,date,name,checkin,checkout})
         // await transporter.sendMail(mailOptions);
         return { status: 'success' };
     } catch (error) {

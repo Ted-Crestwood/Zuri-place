@@ -1,18 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     {{> styles }}
 </head>
+
 <body>
-    <div class="header">
-        {{!-- <img src="https://crestwood-files.s3.us-west-2.amazonaws.com/public/images/avatar-123.png" alt="crestwood-logo"/> --}}
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <img src="https://zuriplace.pages.dev/logos/Zuri-Place-Hotel-Logo-Gold.png"
+                    alt="ZURI PLACE HOTEL LOGO" />
+            </div>
+            <h1>Elegance & Comfort</h1>
+        </div>
+        <div class="content">
+            <p>Dear {{name}},</p>
+            <p> Thank you for reaching out to Zuri Place Oyugis. We’ve received your message and
+                our team will get back to you as soon as possible. Whether you have questions
+                about your booking, need assistance, or have a special request, we’re here to help.
+            </p>
+
+            <p>We look forward to providing you with an exceptional stay at Zuri
+                Place Hotel.</p>
+            <!-- <a href="#" class="cta-button">Manage Your Booking</a> -->
+            <p>Best regards,<br />The Zuri Place Hotel Team</p>
+        </div>
+        <div class="footer">
+            <p>
+                <a href="https://g.co/kgs/Po2BcS7" target="_blank" rel="noopener noreferrer">
+                    Zuri Place Hotel | Zuri Place Building , Oyugis, Kenya </a>| <br />
+                <a href="tel:+254 742 807 653"> Phone: +254 742 807 653</a> |
+                <a href="mailto:reservations@zuriplacehotel.com">
+                    Email: reservations@zuriplacehotel.com</a>
+            </p>
+        </div>
     </div>
-    <h1>Welcome to Zuri Place</h1>
-    <p>We've received your message and will respond shortly.</p>
-    <div class="footer">Regards, <br>Zuri Place</div>
 </body>
 
 </html>

@@ -61,7 +61,7 @@
 const nodemailer = require('nodemailer');
 const hbs = require('nodemailer-express-handlebars');
 
-const contactResponse = async ({ email,message }) => {
+const contactResponse = async ({ email,name }) => {
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         return res.status(400).send("Invalid email address");
     }
@@ -105,7 +105,7 @@ const contactResponse = async ({ email,message }) => {
             })
         }
         // console.log("email:",email)
-        sendMail(email, "Contact Form", "contact", {message,email})
+        sendMail(email, "Your inquiry has been successfully submitted", "contact", {name})
         // await transporter.sendMail(mailOptions);
         return { status: 'success' };
     } catch (error) {
