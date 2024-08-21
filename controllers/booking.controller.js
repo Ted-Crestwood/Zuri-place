@@ -39,18 +39,18 @@ const scheduleEmail = async (email) => {
 
 
 const submitBooking = async (req, res) => {
-    const { email, room, checkout, date, name, checkin,phone, ...data } = req.body;
+    const { email, room, checkout, name, checkin,phone, ...data } = req.body;
     try {
         if (!email && !data) {
             return res.status(400).json({ message: "Provide all the neccessary details" })
         }
-        const madeBooking = await Booking.create({ email, name, checkout, room,phone,checkin,date, ...data })
+        const madeBooking = await Booking.create({ email, name, checkout, room,phone,checkin, ...data })
         if (!madeBooking) {
             return res.status(400).json({ message: "Error creating booking" })
         }
         scheduleEmail(email)
         const userEmail = email;
-        await bookingResponse({ email, room, date, name, checkin, checkout })
+        await bookingResponse({ email, room, name, checkin, checkout })
         await zuriBookingResponse({
             email: 'bookings@app.zuriplacehotel.com',
             room, checkin, checkout, name, phone, userEmail

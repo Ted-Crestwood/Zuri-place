@@ -3,7 +3,7 @@ const hbs = require('nodemailer-express-handlebars')
 const otpGenerator = require('otp-generator');
 
 
-const bookingResponse = async ({email,room,date,name,checkin,checkout}) => {
+const bookingResponse = async ({email,room,name,checkin,checkout}) => {
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         return res.status(400).send("Invalid email address");
     }
@@ -47,7 +47,7 @@ const bookingResponse = async ({email,room,date,name,checkin,checkout}) => {
             })
         }
         // console.log("email:",email)
-        sendMail(email, "Your Reservation at Zuri Place Hotel is confirmed", "booking", {room,date,name,checkin,checkout})
+        sendMail(email, "Your Reservation at Zuri Place Hotel is confirmed", "booking", {room,name,checkin,checkout})
         // await transporter.sendMail(mailOptions);
         return { status: 'success' };
     } catch (error) {
