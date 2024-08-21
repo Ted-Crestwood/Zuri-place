@@ -26,7 +26,11 @@ mongoose.connect(uri, {
     .catch((error) => {
         console.log(error.message)
     })
-
+app.use(cors({
+    origin: 'https://zuriplacehotel.com', // Replace with your frontend domain
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type']
+}));
 app.use('/booking', booking)
 app.use('/contact', contact)
 app.use('/', (req, res) => {
