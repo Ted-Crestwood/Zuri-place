@@ -26,18 +26,7 @@ mongoose.connect(uri, {
     .catch((error) => {
         console.log(error.message)
     })
-// const db = mongoose.connection;
-// db.once('open', async () => {
-//     try {
-//         // Drop the unique index on the email field
-//         await db.collection('Booking').dropIndex('email');
-//         console.log('Unique index on email field dropped');
-//     } catch (error) {
-//         console.error('Error dropping index:', error);
-//     } finally {
-//         mongoose.disconnect();
-//     }
-// });
+
 app.use('/booking', booking)
 app.use('/contact', contact)
 app.use('/', (req, res) => {
