@@ -44,7 +44,7 @@ const submitBooking = async (req, res) => {
         if (!email && !data) {
             return res.status(400).json({ message: "Provide all the neccessary details" })
         }
-        const madeBooking = await Booking.create({ email, name, checkout, room, ...data, date })
+        const madeBooking = await Booking.create({ email, name, checkout, room,phone,checkin,date, ...data })
         if (!madeBooking) {
             return res.status(400).json({ message: "Error creating booking" })
         }

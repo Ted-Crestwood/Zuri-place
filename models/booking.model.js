@@ -1,17 +1,17 @@
 const mongoose = require("mongoose");
 
 const BookingSchema = new mongoose.Schema({
-    name:{type:String,require:true},
-    email:{type:String,require:true,unique:false},
-    phone:{type:Number,require:true},
-    subject:{type:String,require:true},
-    room:{type:String,require:true},
-    date:{type:String,require:true},
-    checkin:{type:String,require:true},
-    checkout:{type:String,require:true},
-    message:{type:String,require:true},
-    createdAt:{type:Date,default: Date.now}
-})
+    name: { type: String, required: true },
+    email: { type: String, required: true, unique: false },
+    phone: { type: String, required: true }, // Changed to String for better handling
+    subject: { type: String, required: true },
+    room: { type: String, required: true },
+    date: { type: String, required: true }, // Changed to Date type
+    checkin: { type: String, required: true }, // Changed to Date type
+    checkout: { type: String, required: true }, // Changed to Date type
+    message: { type: String, required: true },
+    createdAt: { type: String, default: Date.now }
+});
 
-const Booking = mongoose.model("Booking",BookingSchema)
+const Booking = mongoose.model("Booking", BookingSchema);
 module.exports = Booking;

@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: false }))
 const port = 3002;
 const uri = process.env.MONGO_URI;
 
-mongoose.connect(uri,{
+mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     serverSelectionTimeoutMS: 5000, // Adjust this value to your preference
@@ -26,7 +26,18 @@ mongoose.connect(uri,{
     .catch((error) => {
         console.log(error.message)
     })
-
+// const db = mongoose.connection;
+// db.once('open', async () => {
+//     try {
+//         // Drop the unique index on the email field
+//         await db.collection('Booking').dropIndex('email');
+//         console.log('Unique index on email field dropped');
+//     } catch (error) {
+//         console.error('Error dropping index:', error);
+//     } finally {
+//         mongoose.disconnect();
+//     }
+// });
 app.use('/booking', booking)
 app.use('/contact', contact)
 app.use('/', (req, res) => {
