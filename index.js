@@ -13,7 +13,8 @@ const app = express();
 app.use(cors({
     origin: 'https://zuriplacehotel.com', // Replace with your frontend domain
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type']
+    allowedHeaders: ['Content-Type'],
+    credentials: true
 }));
 
 app.use(express.json());
@@ -24,9 +25,9 @@ const uri = process.env.MONGO_URI;
 
 mongoose.connect(uri, {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
-    serverSelectionTimeoutMS: 5000, // Adjust this value to your preference
-    socketTimeoutMS: 45000, // Adjust this value to your preference
+    useUnifiedTopology: true
+    // serverSelectionTimeoutMS: 5000, // Adjust this value to your preference
+    // socketTimeoutMS: 45000, // Adjust this value to your preference
 })
     .then(() => {
         console.log("Connected to Zuri place@Crestwood database successfully");
