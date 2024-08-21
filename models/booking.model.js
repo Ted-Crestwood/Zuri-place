@@ -6,7 +6,7 @@ const BookingSchema = new mongoose.Schema({
     phone: { type: String, required: true }, // Changed to String for better handling
     subject: { type: String, required: true },
     room: { type: String, required: true },
-    date: { type: String, required: true }, // Changed to Date type
+    date: { type: String }, // Changed to Date type
     checkIn: { type: String, required: true }, // Changed to Date type
     checkOut: { type: String, required: true }, // Changed to Date type
     message: { type: String, required: true },
