@@ -1,75 +1,109 @@
 <style>
-         body {
-        font-family: "Epilogue", sans-serif;
-        line-height: 1.6;
-        color: #333;
-        max-width: 600px;
-        margin: 0 auto;
-        padding: 20px;
-        background-color: #f4f4f4;
-      }
-      .container {
-        background-color: #ffffff;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-      }
-      .header {
-        background-color: #000000;
-        color: #ffffff;
-        text-align: center;
-        padding: 30px;
-      }
-      .header h1 {
-        margin: 0;
-        font-weight: 700;
-        letter-spacing: 2px;
-      }
-      .header p {
-        margin: 10px 0 0;
-        font-weight: 300;
-        text-transform: uppercase;
-      }
-      .content {
-        padding: 40px;
-      }
-      .booking-details {
-        background-color: #f9f9f9;
-        padding: 20px;
-        border-radius: 5px;
-        margin-top: 20px;
-      }
-      .booking-details ul {
-        list-style-type: none;
-        padding: 0;
-      }
-      .booking-details li {
-        margin-bottom: 10px;
-      }
-      .footer {
-        text-align: center;
-        padding: 20px;
-        background-color: #f0f0f0;
-        color: #777;
-        font-size: 12px;
-      }
-      .cta-button {
-        display: inline-block;
-        background-color: #000000;
-        color: #ffffff;
-        padding: 12px 24px;
-        text-decoration: none;
-        border-radius: 5px;
-        margin-top: 20px;
-        transition: background-color 0.3s ease;
-      }
-      .cta-button:hover {
-        background-color: #333333;
-      }
+  /* body {
+    font-family: "Epilogue", sans-serif;
+    line-height: 1.6;
+    color: #333;
+    text-align: center;
+    background-color: #f4f4f4;
+    display: block;
+    margin:auto !important;
+  }*/
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* Centers content horizontally */
+    align-items: center;
+    /* Centers content vertically */
+    background-color: #f4f4f4;
+    font-family: "Epilogue", sans-serif;
+    line-height: 1.6;
+    color: #333;
+    text-align: center;
+  }
 
-      .logo {
-        padding: 1rem;
-      }
-      .footer a {
-        color: gray;
-      }
+  .container {
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    max-width: 600px;
+    width:100%;
+  }
 
+  .header {
+    background-color: #000000;
+    color: #ffffff;
+    text-align: center;
+    padding: 30px;
+  }
+
+  .header h1 {
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+
+  .header p {
+    margin: 10px 0 0;
+    font-weight: 300;
+    text-transform: uppercase;
+  }
+
+  .content {
+    padding: 40px;
+  }
+
+  .booking-details {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+
+  .booking-details ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .booking-details li {
+    margin-bottom: 10px;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #f0f0f0;
+    color: #777;
+    font-size: 12px;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+  }
+
+  .cta-button:hover {
+    background-color: #333333;
+  }
+
+  .logo {
+    padding: 1rem;
+  }
+
+  .footer a {
+    color: gray;
+  }
 </style>
