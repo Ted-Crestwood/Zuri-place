@@ -9,7 +9,7 @@ const bookingResponse = async ({email,room,name,checkIn,checkOut}) => {
     }
     try {
         const transporter = nodemailer.createTransport({
-            host: process.env.HOST,
+            host: "app.zuriplacehotel.com",
             port: 465,
             secure: true,
             auth: {
