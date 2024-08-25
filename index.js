@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 const port = 3002;
-const uri = process.env.MONGO_URI;
+const uri = "mongodb+srv://ted:7668Tamera@zuri.3plje.mongodb.net/?retryWrites=true&w=majority&appName=zuri";
 
 mongoose.connect(uri, {
     useNewUrlParser: true,
