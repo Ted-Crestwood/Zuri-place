@@ -10,8 +10,14 @@ dotenv.config();
 const app = express();
 
 // CORS configuration
+// app.use(cors({
+//     origin: 'https://zuriplacehotel.com', // Replace with your frontend domain
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//     allowedHeaders: ['Content-Type'],
+//     credentials: true
+// }));
 app.use(cors({
-    origin: 'https://zuriplacehotel.com', // Replace with your frontend domain
+    origin: ['https://zuriplacehotel.com', 'https://zuri-place-diei3bm8l-ted-crestwoods-projects.vercel.app'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type'],
     credentials: true
