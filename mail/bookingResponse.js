@@ -9,12 +9,12 @@ const bookingResponse = async ({email,room,name,checkIn,checkOut}) => {
     }
     try {
         const transporter = nodemailer.createTransport({
-            host: process.env.HOST,
+            host: "app.zuriplacehotel.com",
             port: 465,
             secure: true,
             auth: {
-                user: process.env.EMAIL,
-                pass: process.env.SMTP_PASSWORD
+                user: "bookings@app.zuriplacehotel.com",
+                pass: "1b}E##2G^tN?"
             }
         });
         const hbsOptions = {
@@ -30,7 +30,7 @@ const bookingResponse = async ({email,room,name,checkIn,checkOut}) => {
             const mailOptions = {
                 from: {
                     name: "Zuri Place",
-                    address: process.env.EMAIL,
+                    address: "bookings@app.zuriplacehotel.com",
                 },
                 to,
                 subject,
