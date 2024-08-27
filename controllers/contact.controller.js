@@ -12,7 +12,7 @@ const contactSubmition =async(req,res)=>{
         await Contact.create({email,message,name,phone,subject, ...data})
         await contactResponse({email,name})
         await zuriContactResponse({
-            email: 'bookings@app.zuriplacehotel.com',
+            email: 'reservations@zuriplacehotel.com',
            name,subject,message,phone,userEmail
         });
         return res.status(200).json({message: "Message submitted successfully"})

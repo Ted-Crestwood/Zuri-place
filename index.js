@@ -4,7 +4,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const booking = require('./routes/booking.route');
 const contact = require('./routes/contact.route');
-
+const serverless = require('serverless-http')
 dotenv.config();
 
 const app = express();
@@ -51,3 +51,4 @@ app.use((err, req, res, next) => {
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
+ module.exports.handler = serverless(app);
