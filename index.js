@@ -17,7 +17,7 @@ const app = express();
 //     credentials: true
 // }));
 app.use(cors({
-    origin: ['https://zuriplacehotel.com', 'https://api.zuriplacehotel.com'],
+    origin: ['https://zuriplacehotel.com', 'https://api.zuriplacehotel.com','http://localhost:3002'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type'],
     credentials: true
