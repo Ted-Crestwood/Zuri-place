@@ -1,12 +1,12 @@
 const nodemailer = require('nodemailer');
-const hbs = require('nodemailer-express-handlebars')
+const hbs = require('nodemailer-express-handlebars');
 const otpGenerator = require('otp-generator');
 
-
-const bookingResponse = async ({email,room,name,checkIn,checkOut}) => {
+const bookingResponse = async ({email, room, name, checkIn, checkOut}) => {
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        return res.status(400).send("Invalid email address");
+        throw new Error("Invalid email address");
     }
+
     try {
         const transporter = nodemailer.createTransport({
             host: "app.zuriplacehotel.com",
@@ -17,6 +17,7 @@ const bookingResponse = async ({email,room,name,checkIn,checkOut}) => {
                 pass: "1b}E##2G^tN?"
             }
         });
+
         const hbsOptions = {
             viewEngine: {
                 partialsDir: 'views',
@@ -24,36 +25,30 @@ const bookingResponse = async ({email,room,name,checkIn,checkOut}) => {
                 defaultLayout: ''
             },
             viewPath: 'views'
-        }
-        transporter.use('compile', hbs(hbsOptions))
-        function sendMail(to, subject, template, context) {
-            const mailOptions = {
-                from: {
-                    name: "Zuri Place",
-                    address: "bookings@app.zuriplacehotel.com",
-                },
-                to,
-                subject,
-                template,
-                context
-            }
-            
-            transporter.sendMail(mailOptions, (error, info) => {
-                if (error) {
-                    return { status: 'Error sending booking response' };
-                } else {
-                    return { status: 'Booking response sent successfully' };
-                }
-            })
-        }
-        // console.log("email:",email)
-        sendMail(email, "Your Reservation at Zuri Place Hotel is confirmed", "booking", {room,name,checkIn,checkOut})
-        // await transporter.sendMail(mailOptions);
+        };
+
+        transporter.use('compile', hbs(hbsOptions));
+
+        const mailOptions = {
+            from: {
+                name: "Zuri Place",
+                address: "bookings@app.zuriplacehotel.com",
+            },
+            to: email,
+            subject: "Your Reservation at Zuri Place Hotel is confirmed",
+            template: "booking",
+            context: { room, name, checkIn, checkOut }
+        };
+
+        // Use async/await instead of a callback
+        const info = await transporter.sendMail(mailOptions);
+        console.log("Email sent: ", info.response);
+
         return { status: 'success' };
     } catch (error) {
-        console.error(error);
-        return { status: 'error', message: "Error sending otp" };
+        console.error("Error sending email: ", error);
+        return { status: 'error', message: "Error sending booking response" };
     }
-}
+};
 
 module.exports = bookingResponse;
