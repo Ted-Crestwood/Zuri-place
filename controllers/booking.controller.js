@@ -39,23 +39,23 @@ const scheduleEmail = async (email) => {
 
 
 const submitBooking = async (req, res) => {
-    const { email, room, checkOut, name, checkIn,phone, ...data } = req.body;
+    const { email, room, checkOut, name, checkIn,phone,package,guests, ...data } = req.body;
     try {
         if (!email && !data) {
             return res.status(400).json({ message: "Provide all the neccessary details" })
         }
-        const madeBooking = await Booking.create({ email, name, checkOut, room,phone,checkIn, ...data })
+        const madeBooking = await Booking.create({ email, name, checkOut, room,phone,checkIn,package,guests, ...data })
         if (!madeBooking) {
             return res.status(400).json({ message: "Error creating booking" })
         }
         scheduleEmail(email)
         const userEmail = email;
-        await bookingResponse({ email, room, name, checkIn, checkOut })
+        await bookingResponse({ email, room, name, checkIn, checkOut,package,guests, })
         await zuriBookingResponse({
             email: 'reservations@zuriplacehotel.com',
-            room, checkIn, checkOut, name, phone, userEmail
+            room, checkIn, checkOut, name, phone, userEmail,package,guests,
         });
-        return res.status(200).json({ message: "Booking made successfully", info: { email, room, checkOut } })
+        return res.status(200).json({ message: "Booking made successfully", info: { email, room, checkOut,package,guests } })
     } catch (error) {
         return res.status(500).json({ message: error.message })
     }

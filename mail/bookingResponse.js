@@ -2,7 +2,7 @@ const nodemailer = require('nodemailer');
 const hbs = require('nodemailer-express-handlebars');
 const otpGenerator = require('otp-generator');
 
-const bookingResponse = async ({email, room, name, checkIn, checkOut}) => {
+const bookingResponse = async ({email, room, name, checkIn, checkOut,package,guests}) => {
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         throw new Error("Invalid email address");
     }
@@ -37,7 +37,7 @@ const bookingResponse = async ({email, room, name, checkIn, checkOut}) => {
             to: email,
             subject: "Your Reservation at Zuri Place Hotel is confirmed",
             template: "booking",
-            context: { room, name, checkIn, checkOut }
+            context: { room, name, checkIn, checkOut,package,guests }
         };
 
         // Use async/await instead of a callback
