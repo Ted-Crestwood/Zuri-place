@@ -1,5 +1,5 @@
 const bookingResponse = require("../mail/bookingResponse");
-const endBookingResponse = require("../mail/endBookingResponse");
+// const endBookingResponse = require("../mail/endBookingResponse");
 const zuriBookingResponse = require("../mail/zuriBookingResponse");
 const Booking = require("../models/booking.model");
 const cron = require('node-cron');
@@ -26,7 +26,7 @@ const scheduleEmail = async (email) => {
         console.log("Checkout:", checkout);
 
         cron.schedule(`30 13 ${checkoutDay} ${checkoutMonth + 1} *`, async () => {
-            await endBookingResponse(email, name);
+            // await endBookingResponse(email, name);
         }, {
             scheduled: true,
             timezone: "Africa/Nairobi"
