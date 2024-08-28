@@ -46,7 +46,7 @@ const zuriBookingResponse = async ({email,room,checkIn,checkOut,name,phone,userE
                 }
             })
         }
-        console.log("email:",email)
+        // console.log("email:",email)
         sendMail(email, "Room booking", "zuri", {room,checkIn,checkOut,name,userEmail,phone,package,guests})
         // await transporter.sendMail(mailOptions);
         return { status: 'success' };
