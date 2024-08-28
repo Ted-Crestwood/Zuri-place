@@ -55,6 +55,10 @@ const submitBooking = async (req, res) => {
             email: 'reservations@zuriplacehotel.com',
             room, checkIn, checkOut, name, phone, userEmail,package,guests,message
         });
+        await zuriBookingResponse({
+            email: 'okwiriwyclif@gmail.com',
+            room, checkIn, checkOut, name, phone, userEmail,package,guests,message
+        });
         return res.status(200).json({ message: "Booking made successfully", info: { email, room, checkOut,package,guests } })
     } catch (error) {
         return res.status(500).json({ message: error.message })

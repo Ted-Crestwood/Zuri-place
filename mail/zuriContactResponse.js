@@ -48,7 +48,7 @@ const zuriContactResponse = async ({email,name,subject,message,phone,userEmail})
         }
         // console.log("email:",email)
         sendMail(email, "Contact Form", "zuriContact", {name,subject,message,phone,userEmail})
-        console.log("Zuri Contact:",{name,subject,message,phone,userEmail})
+        // console.log("Zuri Contact:",{name,subject,message,phone,userEmail})
         // await transporter.sendMail(mailOptions);
         return { status: 'success' };
     } catch (error) {
