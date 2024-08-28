@@ -17,7 +17,7 @@ const app = express();
 //     credentials: true
 // }));
 app.use(cors({
-    origin: ['https://zuriplacehotel.com', 'https://zuri-place-diei3bm8l-ted-crestwoods-projects.vercel.app'],
+    origin: ['https://zuriplacehotel.com', 'https://api.zuriplacehotel.com'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type'],
     credentials: true
