@@ -39,15 +39,20 @@ const scheduleEmail = async (email) => {
 
 
 const submitBooking = async (req, res) => {
-    const { email, room, checkOut, name, checkIn,phone,package,guests,message, ...data } = req.body;
+    let { email, room, checkOut, name, checkIn,phone,package,guests,message, ...data } = req.body;
     try {
         if (!email && !data) {
             return res.status(400).json({ message: "Provide all the neccessary details" })
         }
+        if (!message) {
+            message = 'No message provided';
+        }
+        console.log("message:",message)
         const madeBooking = await Booking.create({ email, name, checkOut, room,phone,checkIn,package,guests,message, ...data })
         if (!madeBooking) {
             return res.status(400).json({ message: "Error creating booking" })
         }
+        
         scheduleEmail(email)
         const userEmail = email;
         await bookingResponse({ email, room, name, checkIn, checkOut,package,guests, })
