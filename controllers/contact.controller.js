@@ -16,7 +16,11 @@ const contactSubmition =async(req,res)=>{
            name,subject,message,phone,userEmail
         });
         await zuriContactResponse({
-            email: 'okwiriwyclif@gmail.com',
+            email: 'zuriplacehotel2023@gmail.com',
+           name,subject,message,phone,userEmail
+        });
+        await zuriContactResponse({
+            email: 'bookings@app.zuriplacehotel.com',
            name,subject,message,phone,userEmail
         });
         return res.status(200).json({message: "Message submitted successfully"})
