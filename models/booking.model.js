@@ -8,11 +8,11 @@ const BookingSchema = new mongoose.Schema({
     room: { type: String },
     package: { type: String },
     guests: { type: String },
-    date: { type: String }, // Changed to Date type
-    checkIn: { type: String }, // Changed to Date type
-    checkOut: { type: String }, // Changed to Date type
-    message: { type: String, default: 'No message provided' },
-    timeStamp: { type: String, default: Date.now() }
+    date: { type: String }, 
+    checkIn: { type: String }, 
+    checkOut: { type: String }, 
+    message: { type: String, default: 'No message provided', required: false },
+    timeStamp: { type: Date, default: Date.now() }
 });
 
 const Booking = mongoose.model("Booking", BookingSchema);
