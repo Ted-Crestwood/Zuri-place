@@ -39,40 +39,48 @@ const scheduleEmail = async (email) => {
 
 
 const submitBooking = async (req, res) => {
-    let { email, room, checkOut, name, checkIn,phone,package,guests,message, ...data } = req.body;
+    let { email, room, checkOut, name, checkIn, phone, package, guests, message, ...data } = req.body;
+
     try {
-        if (!email && !data) {
-            return res.status(400).json({ message: "Provide all the neccessary details" })
+        if (!email || !name || !room || !checkIn || !checkOut) {
+            return res.status(400).json({ message: "Provide all the necessary details" });
         }
+
         if (!message) {
             message = 'No message provided';
         }
-        console.log("message:",message)
-        const madeBooking = await Booking.create({ email, name, checkOut, room,phone,checkIn,package,guests,message, ...data })
+
+        console.log("message:", message);
+
+        const madeBooking = await Booking.create({ email, name, checkOut, room, phone, checkIn, package, guests, message, ...data });
+
         if (!madeBooking) {
-            return res.status(400).json({ message: "Error creating booking" })
+            return res.status(400).json({ message: "Error creating booking" });
         }
-        
-        scheduleEmail(email)
+
         const userEmail = email;
-        await bookingResponse({ email, room, name, checkIn, checkOut,package,guests, })
-        await zuriBookingResponse({
-            email: 'reservations@zuriplacehotel.com',
-            room, checkIn, checkOut, name, phone, userEmail,package,guests,message
-        });
-        await zuriBookingResponse({
-            email: 'reservationszuriplacehotel@gmail.com',
-            room, checkIn, checkOut, name, phone, userEmail,package,guests,message
-        });
-        await zuriBookingResponse({
-            email: 'bookings@app.zuriplacehotel.com',
-            room, checkIn, checkOut, name, phone, userEmail,package,guests,message
-        });
-        return res.status(200).json({ message: "Booking made successfully", info: { email, room, checkOut,package,guests } })
+
+        await bookingResponse({ email, room, name, checkIn, checkOut, package, guests });
+
+        const zuriEmails = [
+            'reservations@zuriplacehotel.com',
+            'reservationszuriplacehotel@gmail.com',
+            'bookings@app.zuriplacehotel.com'
+        ];
+
+        for (const zuriEmail of zuriEmails) {
+            await zuriBookingResponse({
+                email: zuriEmail,
+                room, checkIn, checkOut, name, phone, userEmail, package, guests, message
+            });
+        }
+
+        return res.status(200).json({ message: "Booking made successfully", info: { email, room, checkOut, package, guests } });
     } catch (error) {
-        return res.status(500).json({ message: error.message })
+        return res.status(500).json({ message: error.message });
     }
-}
+};
+
 
 const checkoutRoom = async (req, res) => {
 
